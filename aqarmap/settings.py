@@ -37,7 +37,8 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'userlogin'
+	'userlogin',
+    'property'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -78,10 +79,10 @@ WSGI_APPLICATION = 'aqarmap.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'user_db',
+        'NAME': 'aqarmap',
         'HOST':'localhost',
         'USER':'root',
-        'PASSWORD':'iti',
+        'PASSWORD':'1232102512',
     }
 }
 
@@ -124,3 +125,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# TEMPLATE_DIR = ('Project/myapp/templates',)
+CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+
+STATICFILES_DIRS = (
+    os.path.join(CURRENT_PATH, 'static'),
+)

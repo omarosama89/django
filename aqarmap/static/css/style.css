@@ -1,0 +1,121 @@
+body .btn-group-justified>.btn-group .dropdown-menu{
+    width: 100%;
+    
+}.error{
+	background:#eee;border:solid 1px #ccc;border-radius:5px;
+	padding: 10px;
+}body .error .col-sm-3{
+	color: red;
+}body .error .col-sm-8{
+	color: blue;
+}.captcha{
+	background: #eee;
+	border: solid 1px #ccc;
+	margin: 5px;
+	padding: 5px;
+	font-size: 14px;
+}.red{
+	color: red;
+	text-align: center;
+}.img{
+	width: 100px;
+	height: 100px;
+	border: solid 2px #ccc;
+}body .navbar{
+	border-radius: 0px;
+}.box{
+	border:solid 1px #ccc;
+	min-height: 300px;
+	min-width: 200px;
+}.last_product li{
+   width: 100px;
+   height: 100px;
+   border:solid 1px #ccc;
+   float: left;
+   margin: 5px;
+   list-style: none;
+}.product li{
+   width: 100px;
+   height: 100px;
+   margin: 5px;
+   border:solid 1px #ccc;
+   float: left;
+   list-style: none;
+}.result{
+	margin: 10px;
+	display: none;
+    padding: 10px;
+    border-radius: 5px
+}.user_data{
+ margin: 10px;
+ }.user_data img{ 
+ width: 60px;
+ height: 60px;
+ border-radius: 5px;
+ border:solid 1px #ccc;
+}.left_order{
+	border:solid 1px #ccc;
+	border-radius: 5px;
+	padding: 4px;
+    min-height: 200px;
+}.right_order{
+}.right_order img,.prod img {
+   width:100px;
+   height: 100px;
+   border-radius: 5px;
+}.right_order .prod{
+	cursor: pointer;
+	position: relative;
+}.prod .badge{
+	position: absolute;
+    background: #eee;
+    color: #000;
+    border: solid 1px #ccc;
+    right: 6%;
+    top: 0%;
+    padding: 6px;
+}.prod{
+	margin-bottom: 40px; 
+	border-right: solid 1px #ccc;
+	text-align: center;
+}.left_order select,.left_order textarea{
+   width:80%;
+   margin: 0 auto;
+}#orders li{
+	list-style: none;
+	padding-top: 5px;
+    padding-bottom: 5px;
+	text-align: left;
+	font-style: 16px;
+}#orders li span:nth-child(2){
+}#orders li span:nth-child(3){
+}#orders li span{
+	display: inline-block;	
+}#orders .glyphicon{
+	font-size: 13px;
+	cursor: pointer;
+}#orders{
+	padding: 0px;
+	margin: 0px;
+}#orders li .col-md-3,#orders li .col-md-4,#orders li .col-md-2,#orders li .col-md-1{
+	padding-right: 0px;
+	padding-left: 0px; 
+}#total{
+	margin-top: 10px;
+}body .thumb{
+	width:100px;height:100px;border-radius:5px;
+}.border div{
+	border:solid 1px #ccc;
+	min-height: 20px;
+}.border .odd{
+	background: #eee;
+}.border .even{
+	background: #dff0d8;
+}.tr{
+	cursor: pointer;
+}.blue{
+	color: #286090;
+}
+
+
+

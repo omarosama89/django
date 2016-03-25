@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from property import views
 
 urlpatterns = [
     url(r'^userlogin/', include('userlogin.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^add-property/', views.addProperty),
+    url(r'^edit-property/(\d)/$', views.editProperty),
+    url(r'^update-property/', views.updateProperty),
+    
+
 ]
