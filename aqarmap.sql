@@ -325,7 +325,7 @@ CREATE TABLE `property_property` (
   PRIMARY KEY (`id`),
   KEY `property_property_owner_id_9b775832_fk_userlogin_client_id` (`owner_id`),
   CONSTRAINT `property_property_owner_id_9b775832_fk_userlogin_client_id` FOREIGN KEY (`owner_id`) REFERENCES `userlogin_client` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `property_property` (
 
 LOCK TABLES `property_property` WRITE;
 /*!40000 ALTER TABLE `property_property` DISABLE KEYS */;
-INSERT INTO `property_property` VALUES (1,'apartment','nasr city',-70,70,700,180,'/',3,2,1);
+INSERT INTO `property_property` VALUES (8,'bool','nasr city',70,-70,120000,120,'8.jpeg',0,0,1),(9,'appartment','helwan',70,-70,1230,120,'9.png',1,2,1);
 /*!40000 ALTER TABLE `property_property` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,4 +379,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-25 22:53:41
+-- Dump completed on 2016-03-29 21:33:48
