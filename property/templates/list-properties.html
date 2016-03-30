@@ -1,28 +1,18 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-	{% load staticfiles %}
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title></title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'font-awesome-4.5.0/css/font-awesome.css' %}">
 
-    <script src="{% static 'js/jquery-1.11.2.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
+{% include "header.html" %}
+{% load staticfiles %}
 
-
-</head>
-<body>
-		
-		
-		<embed type="text/html" src="{% static 'templates/header.html'%}">
+{#		<embed type="text/html" src="{% static 'templates/header.html'%}">#}
 		<div class="container">
+        <form action="/property/search" method="get">
+            <input type="text" name="q">
+            <input type="submit" value="search">
+        </form>
             {% for prop in props%}
             <div class="well">
                 <h1>{{prop.ptype}}</h1>
-                <img src="{% static 'img/' prop.img %}">
+                <h1>{{prop.location}}</h1>
+                <img src="{% static 'img/'%}{{prop.img}}">
             </div>
             {% endfor %}
             

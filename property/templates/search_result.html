@@ -1,0 +1,21 @@
+
+{% include "header.html" %}
+{% load staticfiles %}
+
+<div class="container">
+    <form action="/property/search" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="search">
+    </form>
+    {% for prop in props%}
+        <div class="well">
+            <h1>{{prop.ptype}}</h1>
+            <h1>{{prop.location}}</h1>
+            <img src="{% static 'img/'%}{{prop.img}}">
+
+        </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>
