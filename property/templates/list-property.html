@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	{% load staticfiles %}
+    {% load humanize %}
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
@@ -12,13 +13,45 @@
     <script src="{% static 'js/jquery-1.11.2.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
+    <script src="http://maps.googleapis.com/maps/api/js">
+    </script>
+
+    <script>
+    function initialize() {
+      var mapProp = {
+        center:new google.maps.LatLng({{prop.latt}},{{prop.lang}}),
+        zoom:5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
 </head>
 <body>
 		
-		
-{#		<embed type="text/html" src="{% static 'templates/header.html'%}">#}
-		<div class="container">		
-	    </div>
+	    {% include "header.html" %}	
+{#		<embed type="text/html" src="{% static 'templates/header.html'%}"> #}
+    <div class="container well">
+        <h1>{{prop.ptype}}</h1>
+        <div class="row well col-lg-6">
+            <div class="col-" id="googleMap" style="width:500px;height:380px;"></div>
+        </div>
+        <div class="row well col-lg-offset-6">
+            <ul>
+                <li><label>Location : &nbsp;</label>{{ prop.location }}</li>
+                <li><label>Price : &nbsp;</label>{{ prop.price|intcomma }} EGP</li>
+                <li><label>Area : &nbsp;</label>{{ prop.area }}</li>
+                <li><label>Number of rooms : &nbsp;</label>{{ prop.nrooms }}</li>
+                <li><label>Number of toilets : &nbsp;</label>{{ prop.ntoilets }}</li>
+                <li><label>Owner name : &nbsp; </label>{{ prop.owner.name }}</li>
+                <li><label>Phone number : &nbsp; </label>{{ prop.owner.phone_number }}</li>
+                <li><label>Email : &nbsp; </label>{{ prop.owner.email }}</li>
+                
+            </ul>
+            <img src="{% static 'img/'%}{{prop.img}}">
+        </div>
+    </div>
 </body>
 </html>

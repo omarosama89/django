@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'userlogin',
-    'property'
+    'property',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -80,7 +81,7 @@ DATABASES = {
         'NAME': 'aqarmap',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '1232102512',
     }
 }
 

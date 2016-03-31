@@ -84,7 +84,8 @@ def listProperties(request):
 
 
 def listProperty(request, pid):
-    pass
+    prop = Property.objects.get(pk = pid)
+    return render(request, 'list-property.html', {"prop": prop})
 
 
 def search(request):
