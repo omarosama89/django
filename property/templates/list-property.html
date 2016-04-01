@@ -16,23 +16,43 @@
     <script src="http://maps.googleapis.com/maps/api/js">
     </script>
 
+    <script >
+        function showPosition() {
+            var latlon = {{prop.latt}} + "," + {{prop.lang}};
+
+            var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="
+            +latlon+"&zoom=14&size=540x380&sensor=false";
+            document.getElementById("googleMap").innerHTML = "<img src='"+img_url+"'>";
+        }
+        google.maps.event.addDomListener(window, 'load', showPosition);
+    </script>
+
     <script>
-    function initialize() {
-      var mapProp = {
-        center:new google.maps.LatLng({{prop.latt}},{{prop.lang}}),
-        zoom:5,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+        // $("#zoom").addEventListener("change",function(e){
+        //     console.log(e);
+        // })
+        // function changeZoom(e){
+        //     console.log(e)
+        // }
     </script>
 
 </head>
 <body>
 		
 	    {% include "header.html" %}	
-{#		<embed type="text/html" src="{% static 'templates/header.html'%}"> #}
+        <div class="container">
+            <div class="row container well">
+                <form action="/property/search" method="get">
+                    <div class="row col-lg-4">
+                        <input type="text" name="q">
+                        <input type="submit" value="search">
+                    </div>
+                    <div class="col-lg-offset-8 ">
+                        <a class="btn-info" href="../../list-properties/">List Properties</a>
+                    </div>    
+                </form>
+            </div>
+        </div>
     <div class="container well">
         <h1>{{prop.ptype}}</h1>
         <div class="row well col-lg-6">

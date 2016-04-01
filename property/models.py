@@ -8,8 +8,8 @@ from userlogin.models import Client
 class Property(models.Model):
 	ptype = models.CharField(max_length=50)
 	location = models.CharField(max_length=50)
-	lang = models.IntegerField()
-	latt = models.IntegerField()
+	lang = models.CharField(max_length=50)
+	latt = models.CharField(max_length=50)
 	price = models.IntegerField()
 	area = models.IntegerField()
 	img = models.CharField(max_length=100)

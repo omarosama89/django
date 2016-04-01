@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+	{% include "header.html" %}
 	{% load staticfiles %}
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -12,15 +13,60 @@
     <script src="{% static 'js/jquery-1.11.2.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
+    <script>
+
+		function getLocation() {
+			if($('#locationGPS').is(':checked'))
+		    	navigator.geolocation.getCurrentPosition(setPosition, showError);
+		    else{
+		    	$('#lat').removeAttr('value')
+				$('#long').removeAttr('value')
+		    }
+
+		}
+
+		function setPosition(position) {
+			$('#lat').attr('value',position.coords.latitude);
+			$('#long').attr('value',position.coords.longitude);
+		}
+
+		function showError(error) {
+		    switch(error.code) {
+		        case error.PERMISSION_DENIED:
+		            console.log("User denied the request for Geolocation.")
+		            break;
+		        case error.POSITION_UNAVAILABLE:
+		            console.log("Location information is unavailable.")
+		            break;
+		        case error.TIMEOUT:
+		            console.log("The request to get user location timed out.")
+		            break;
+		        case error.UNKNOWN_ERROR:
+		            console.log("An unknown error occurred.")
+		            break;
+		    }
+		}
+		</script>
 
 </head>
 <body>
 		
-		
 {#		<embed type="text/html" src="{% static 'templates/header.html'%}">#}
 		<div class="container">		
-	    <form role="form" method="post" id="frm" action="/update-property/" enctype="multipart/form-data">
+			<div class="row container well">
+                <form action="/property/search" method="get">
+                    <div class="row col-lg-4">
+                        <input type="text" name="q">
+                        <input type="submit" value="search">
+                    </div>
+                    <div class="col-lg-offset-8 ">
+                        <a class="btn-info" href="../list-properties/">List Properties</a>
+                    </div>    
+                </form>
+            </div>
+	    <form role="form" method="post" id="frm" action="../update-property/" enctype="multipart/form-data">
 	    	{% csrf_token %}
+	    	<div class='form-horizontal'>
 	        <div class="form-group">
 	            <label class="col-md-2">Property type :</label>
 	            <input class="col-md-10" type="text" class="form-control" id="ptype" name="ptype" placeholder="Property type">
@@ -28,6 +74,14 @@
 	        <div class="form-group">
 	            <label class="col-md-2">Location :</label>
 	            <input class="col-md-10" type="text" class="form-control" id="location" name="location" placeholder="Location">
+
+	        </div>
+	        <div class="form-group">
+	            <label class="col-md-2">GoogleMaps location :</label>
+	            <input class="col-md-0" type="checkbox" onchange="getLocation()" class="form-control" id="locationGPS" name="locationGPS" value="0">&nbsp;current position
+	            <input type="button" class="btn-info col-lg-offset-1" value="browse location">
+	            <input type="hidden" name="lat" id="lat">
+	            <input type="hidden" name="long" id="long">	            
 	        </div>
 	        <div class="form-group">
 	            <label class="col-md-2" for="username">Price :</label>
@@ -53,6 +107,7 @@
 	        <div class="col-md-offset-2 row">
 	        	<input type="submit" class="col-md-2 btn btn-primary" value="Submit">
 	        	<input type="reset" class="col-md-2 btn btn-primary" value="reset">
+	        </div>
 	        </div>
 	        
 	    </form>

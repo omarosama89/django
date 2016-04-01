@@ -56,8 +56,10 @@ def updateProperty(request):
     crrProp.area = request.POST['area']
     crrProp.nrooms = request.POST['nrooms']
     crrProp.ntoilets = request.POST['ntoilets']
-    crrProp.lang = 70
-    crrProp.latt = -70
+    crrProp.lang = request.POST['long']
+    crrProp.latt = request.POST['lat']
+    # crrProp.lang = 70
+    # crrProp.latt = 40
     SITE_ROOT = path.dirname(path.dirname(path.realpath(__file__)))
     user = Client.objects.get(pk=1)
     crrProp.owner = user

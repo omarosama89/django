@@ -5,10 +5,17 @@
 
 {#		<embed type="text/html" src="{% static 'templates/header.html'%}"> #}
 		<div class="container">
-        <form action="/property/search" method="get">
-            <input type="text" name="q">
-            <input type="submit" value="search">
-        </form>
+            <div class="row container well">
+                <form action="/property/search" method="get">
+                    <div class="row col-lg-4">
+                        <input type="text" name="q">
+                        <input type="submit" value="search">
+                    </div>
+                    <div class="col-lg-offset-8 ">
+                        <a class="btn-info" href="../add-property/">Add Property</a>
+                    </div>    
+                </form>
+            </div>
             {% for prop in props%}
             <div class="row well container">
                 <div class="row">
