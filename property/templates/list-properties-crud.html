@@ -1,0 +1,50 @@
+
+{% include "header.html" %}
+{% load staticfiles %}
+{% load humanize %}
+
+{#		<embed type="text/html" src="{% static 'templates/header.html'%}"> #}
+		<div class="container">
+            <div class="row container well">
+                <form action="/property/search" method="get">
+                    <div class="row col-lg-4">
+                        <input type="text" name="q">
+                        <input type="submit" value="search">
+                    </div>
+                    <div class="col-lg-offset-8 ">
+                        <a class="btn-info" href="../add-property/">Add Property</a>
+                    </div>    
+                </form>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <td>id</td>
+                    <td>Type</td>
+                    <td>location</td>
+                    <td>price</td>
+                    <td>area</td>
+                    <td>number of rooms</td>
+                    <td>number of toilets</td>
+                    <td>Action</td>
+                </thead>
+            {% for prop in props%}
+                <tbody>
+                    <tr>
+                        <td>{{prop.id}}</td>
+                        <td>{{prop.ptype}}</td>
+                        <td>{{prop.location}}</td>
+                        <td>{{prop.price}}</td>
+                        <td>{{prop.area}}</td>
+                        <td>{{prop.nrooms}}</td>
+                        <td>{{prop.ntoilets}}</td>
+                        <td>
+                            <a href="../edit-property/{{prop.id}}">Edit</a>&nbsp;|&nbsp;<a href="../delete-property/{{prop.id}}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+            </table>
+            
+	    </div>
+</body>
+</html>
