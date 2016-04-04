@@ -1,20 +1,107 @@
-
 {% include "header.html" %}
 {% load staticfiles %}
 
-<div class="container">
-    <form action="/property/search" method="get">
-        <input type="text" name="q">
-        <input type="submit" value="search">
-    </form>
-    {% for prop in props%}
-        <div class="well">
-            <h1>{{prop.ptype}}</h1>
-            <h1>{{prop.location}}</h1>
-            <img src="{% static 'img/'%}{{prop.img}}">
 
+<section class="container filterContainer homepage">
+    <div class="row">
+        <div class="col-md-12 noLeftOrRight">
+            <div class="page-header">
+                <h1>Search For Sale</h1>
+            </div>
+            <div class="sectionBody clearfix" id="search-form-container">
+                <form name="search" method="get" action="/property/search">
+                    <fieldset>
+                        <select id="search_propertyType" name="appartType">
+                            {% for prop in allResult %}
+                                <option value="{{ prop.ptype }}" label="{{ prop.ptype }}">{{ prop.ptype }}</option>
+                            {% endfor %}
+                        </select>
+                        <select  class="ng-pristine ng-valid" name="saleOrRent">
+                            <option value="sale" selected="selected">For Sale</option>
+                            <option value="rent">For Rent</option>
+                        </select>
+
+                        <!-- ngRepeat: item in selections --><span location-select="$index"
+                                                                   ng-repeat="item in selections"
+                                                                   searchable-only="true" class="ng-scope">
+                            <select name="government">
+                                {% for prop in allResult %}
+                                    <option value="{{ prop.government }}"
+                                            label="{{ prop.government }}">{{ prop.government }}</option>
+                                {% endfor %}
+                            </select></span><!-- end ngRepeat: item in selections --><span location-select="$index"
+                                                                                           ng-repeat="item in selections"
+                                                                                           searchable-only="true"
+                                                                                           class="ng-scope">
+
+                            <select class="ng-pristine ng-valid" name="location">
+                                {% for prop in allResult %}
+                                    <option value="{{ prop.location }}" label="{{ prop.location }}">{{ prop.location }}</option>
+                                {% endfor %}
+                            </select></span><!-- end ngRepeat: item in selections -->
+                        <select class="ng-pristine ng-valid" name="minPrice">
+                            <option value="" class="">(Min Price)</option>
+                            {% for prop in allResult %}
+                                <option value="{{ prop.price }}" label="{{ prop.price }}">{{ prop.price }}</option>
+                            {% endfor %}
+                        </select>
+                        <select class="ng-pristine ng-valid" name="maxPrice">
+                            <option value="" class="">(Max Price)</option>
+                            {% for prop in allResult %}
+                                <option value="{{ prop.price }}" label="{{ prop.price }}">{{ prop.price }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </fieldset>
+                    <div class="search_submit">
+                        <div class="search_by_image" title="Show listings that contains photos">
+                            <input type="checkbox" id="search_photos" name="search[photos]"
+                                   class="filter_image_input" value="1">
+                            <label class="filter_image" for="search_photos">Ads with photos only</label>
+                        </div>
+                        <div class="clearfix">
+                            <button type="submit"><span></span>Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    {% endfor %}
+    </div>
+</section>
+
+
+        <section class="featuredContainer">
+            <div class="container">
+                <div class="row">
+                    <div class="page-header">
+                        <h1>العقارات المميزة</h1>
+                    </div>
+                    {% for prop in props %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="listing-card clearfix">
+                            <a href="/ar/projects/788177" target="_blank">
+                                <img src="{% static 'img/' %}{{ prop.img }}">
+
+                                <div class="thumbnailDetails">
+                                    <div class="photosNumer top">
+                                        10
+                                        <span class="glyphicon glyphicon-picture"> </span>
+                                    </div>
+                                </div>
+                            </a>
+                            <h1><a href="/ar/projects/788177" target="_blank">{{ prop.ptype }}</a></h1>
+                            <p>{{ prop.location }}</p>
+                            <div class="clearfix">
+                                <h2><span class="integer">&nbsp;{{ prop.price }} </span> EGP</h2>
+                                <a href="/ar/projects/788177" target="_blank" class="detailsButton">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
 
 </div>
 </body>

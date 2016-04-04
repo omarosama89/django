@@ -84,33 +84,47 @@ def listProperties(request):
     props = Property.objects.all()
     return render(request, 'list-properties.html', {"props": props})
 
+
 def listPropertiesCRUD(request):
-    user = Client.objects.get(pk = 1)
-    props = Property.objects.filter(owner = user)
+    user = Client.objects.get(pk=1)
+    props = Property.objects.filter(owner=user)
     return render(request, 'list-properties-crud.html', {"props": props})
 
 
 def listProperty(request, pid):
-    prop = Property.objects.get(pk = pid)
+    prop = Property.objects.get(pk=pid)
     return render(request, 'list-property.html', {"prop": prop})
 
-def deleteProperty(request, pid):
-    prop = Property.objects.get(pk = pid)
-    prop.delete()
-    user = Client.objects.get(pk = 1)
-    props = Property.objects.filter(owner = user)
-    return render(request, 'list-properties-crud.html', {"props": props})
 
+def deleteProperty(request, pid):
+    prop = Property.objects.get(pk=pid)
+    prop.delete()
+    user = Client.objects.get(pk=1)
+    props = Property.objects.filter(owner=user)
+    return render(request, 'list-properties-crud.html', {"props": props})
+# if appartType and government and saleOrRent and minPrice and maxPrice and location:
+#     props = Property.objects.filter(location__contains=location, ptype__contains=appartType,
+#                                     price__range=[minPrice, maxPrice], saleOrRent__contains=saleOrRent,
+#                                     government__contains=government)
 
 def search(request):
-    query = request.GET.get('q')
-    if query:
-        props = Property.objects.filter(location__contains=query)
+    # query = request.GET.get('q')
+    location = request.GET.get('location')
+    government = request.GET.get('government')
+    saleOrRent = request.GET.get('saleOrRent')
+    minPrice = request.GET.get('minPrice')
+    maxPrice = request.GET.get('maxPrice')
+    appartType = request.GET.get('appartType')
+    if appartType and government and saleOrRent and minPrice and maxPrice and location:
+        props = Property.objects.filter(location__contains=location, ptype__contains=appartType,
+                                        price__range=[minPrice, maxPrice], saleOrRent__contains=saleOrRent,
+                                        government__contains=government)
         if not props:
             props = Property.objects.all()
-            return render(request, 'list-properties.html', {"props": props})
+            return render(request, 'list-properties.html', {"props": props, "no": "No Result"})
         else:
-            return render(request, 'search_result.html', {'props': props})
+            allResult = Property.objects.all()
+            return render(request, 'search_result.html', {'props': props, 'allResult': allResult})
     else:
         props = Property.objects.all()
         return render(request, 'list-properties.html', {"props": props})

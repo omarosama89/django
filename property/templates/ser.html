@@ -1,0 +1,147 @@
+<div class="col-md-12 noLeftOrRight">
+    <div class="page-header">
+        <h1>Search For Sale</h1>
+    </div>
+    <div class="sectionBody clearfix" id="search-form-container">
+        <form name="search" method="post" action="https://egypt.aqarmap.com/en/search" ng-controller="searchController"
+              class="ng-scope ng-pristine ng-valid">
+            <fieldset>
+                <select id="search_propertyType" name="search[propertyType]">
+                    <option value="1">Apartment</option>
+                    <option value="5">Building</option>
+                    <option value="7">Chalet</option>
+                    <option value="8">Furnished Apartment</option>
+                    <option value="10">Other</option>
+                    <option value="11">Land</option>
+                    <option value="13">Office</option>
+                    <option value="14">Store</option>
+                    <option value="16">Villa</option>
+                </select>
+                <select id="search_section" name="search[section]" ng-model="section" ng-init="initSection(1)"
+                        class="ng-pristine ng-valid">
+                    <option value="1" selected="selected">For Sale</option>
+                    <option value="2">For Rent</option>
+                </select>
+                <input type="hidden" id="search_location" name="search[location]" ng-value="selectedLocation.id"
+                       value="30">
+                <!-- ngRepeat: item in selections --><span location-select="$index" ng-repeat="item in selections"
+                                                           searchable-only="true" class="ng-scope"><select
+                    ng-model="currentSelected" ng-options="data as data.title for data in options"
+                    ng-init="currentSelected = options[0]" class="ng-pristine ng-valid">
+                <option value="0" selected="selected" label="Greater Cairo">Greater Cairo</option>
+                <option value="1" label="Alexandria">Alexandria</option>
+                <option value="2" label="North Coast">North Coast</option>
+                <option value="3" label="Marsa Matruh">Marsa Matruh</option>
+                <option value="4" label="Ain El Sokhna">Ain El Sokhna</option>
+                <option value="5" label="Hurghada / Red Sea">Hurghada / Red Sea</option>
+                <option value="6" label="Ras Sidr">Ras Sidr</option>
+                <option value="7" label="Sharm el Sheikh">Sharm el Sheikh</option>
+                <option value="8" label="Dakahlia / Mansoura">Dakahlia / Mansoura</option>
+                <option value="9" label="Sharqia / Zagazig">Sharqia / Zagazig</option>
+                <option value="10" label="Gharbia / Tanta">Gharbia / Tanta</option>
+                <option value="11" label="Ismailia">Ismailia</option>
+                <option value="12" label="Dumiat">Dumiat</option>
+                <option value="13" label="Suez">Suez</option>
+                <option value="14" label="Beheira / Damanhur">Beheira / Damanhur</option>
+                <option value="15" label="Aswan">Aswan</option>
+                <option value="16" label="Luxor">Luxor</option>
+                <option value="17" label="Asyut">Asyut</option>
+                <option value="18" label="Monufia / Shebeen El-Kom">Monufia / Shebeen El-Kom</option>
+                <option value="19" label="Qina">Qina</option>
+                <option value="20" label="Sohag">Sohag</option>
+                <option value="21" label="Sinai / Arish">Sinai / Arish</option>
+                <option value="22" label="El Fayoum">El Fayoum</option>
+                <option value="23" label="Port Said">Port Said</option>
+                <option value="24" label="Kafr el-Sheikh">Kafr el-Sheikh</option>
+                <option value="25" label="Bani Suef">Bani Suef</option>
+                <option value="26" label="El minia">El minia</option>
+                <option value="27" label="New Valley">New Valley</option>
+                <option value="28" label="Qalyubia / Banha">Qalyubia / Banha</option>
+            </select></span><!-- end ngRepeat: item in selections --><span location-select="$index"
+                                                                           ng-repeat="item in selections"
+                                                                           searchable-only="true"
+                                                                           class="ng-scope"><select
+                    ng-model="currentSelected" ng-options="data as data.title for data in options"
+                    ng-init="currentSelected = options[0]" class="ng-pristine ng-valid">
+                <option value="0" selected="selected" label="New Cairo Fifth District">New Cairo Fifth District</option>
+                <option value="1" label="6th Of October">6th Of October</option>
+                <option value="2" label="El Sheikh Zayed City">El Sheikh Zayed City</option>
+                <option value="3" label="Heliopolis">Heliopolis</option>
+                <option value="4" label="Nasr City">Nasr City</option>
+                <option value="5" label="El Maadi">El Maadi</option>
+                <option value="6" label="El Shorouk &amp; New Heliopolis">El Shorouk &amp; New Heliopolis</option>
+                <option value="7" label="El Oubour">El Oubour</option>
+                <option value="8" label="El Hadabh El Wosta">El Hadabh El Wosta</option>
+                <option value="9" label="Rehab &amp; Madinaty">Rehab &amp; Madinaty</option>
+                <option value="10" label="Faisal">Faisal</option>
+                <option value="11" label="Alex-Cairo Desert Road">Alex-Cairo Desert Road</option>
+                <option value="12" label="El Zamalek">El Zamalek</option>
+                <option value="13" label="El Mohandesen">El Mohandesen</option>
+                <option value="14" label="Dokki">Dokki</option>
+                <option value="15" label="El Haram">El Haram</option>
+                <option value="16" label="El Jizah district">El Jizah district</option>
+                <option value="17" label="Mokattam">Mokattam</option>
+                <option value="18" label="Helwan">Helwan</option>
+                <option value="19" label="Ain Shams">Ain Shams</option>
+                <option value="20" label="Badr City">Badr City</option>
+                <option value="21" label="10th of Ramadan">10th of Ramadan</option>
+                <option value="22" label="Garden City">Garden City</option>
+                <option value="23" label="Downtown">Downtown</option>
+                <option value="24" label="El Zaytun">El Zaytun</option>
+                <option value="25" label="EL Koba Gardens">EL Koba Gardens</option>
+                <option value="26" label="Hadayek El Ahram">Hadayek El Ahram</option>
+                <option value="27" label="Shoubra">Shoubra</option>
+                <option value="28" label="Imbaba">Imbaba</option>
+                <option value="29" label="El Agouza">El Agouza</option>
+                <option value="30" label="Manial">Manial</option>
+                <option value="31" label="El Abbasiya">El Abbasiya</option>
+                <option value="32" label="15th of May">15th of May</option>
+                <option value="33" label="Other Neighborhoods">Other Neighborhoods</option>
+            </select></span><!-- end ngRepeat: item in selections -->
+                <input type="hidden" id="search_minPrice" name="search[minPrice]" ng-value="minPrice.value">
+                <select ng-model="minPrice" ng-options="price.value|number:0 for price in minPriceFilters"
+                        class="ng-pristine ng-valid">
+                    <option value="" class="">(Min Price)</option>
+                    <option value="0" label="100,000">100,000</option>
+                    <option value="1" label="250,000">250,000</option>
+                    <option value="2" label="500,000">500,000</option>
+                    <option value="3" label="750,000">750,000</option>
+                    <option value="4" label="1,000,000">1,000,000</option>
+                    <option value="5" label="2,000,000">2,000,000</option>
+                    <option value="6" label="5,000,000">5,000,000</option>
+                </select>
+                <input type="hidden" id="search_maxPrice" name="search[maxPrice]" ng-value="maxPrice.value">
+                <select ng-model="maxPrice" ng-options="price.value|number:0 for price in maxPriceFilters"
+                        class="ng-pristine ng-valid">
+                    <option value="" class="">(Max Price)</option>
+                    <option value="0" label="100,000">100,000</option>
+                    <option value="1" label="250,000">250,000</option>
+                    <option value="2" label="500,000">500,000</option>
+                    <option value="3" label="750,000">750,000</option>
+                    <option value="4" label="1,000,000">1,000,000</option>
+                    <option value="5" label="2,000,000">2,000,000</option>
+                    <option value="6" label="5,000,000">5,000,000</option>
+                </select>
+            </fieldset>
+            <div class="search_submit">
+                <div class="search_by_image" title="Show listings that contains photos">
+                    <input type="checkbox" id="search_photos" name="search[photos]" class="filter_image_input"
+                           value="1">
+                    <label class="filter_image" for="search_photos">Ads with photos only</label>
+                </div>
+                <input type="hidden" id="search__token" name="search[_token]"
+                       value="hTmyX4DdIDXVKvgUJkmkL4BT1aACJPbRssiR2sLuy_I">
+                <div class="clearfix">
+                    <button type="submit"><span></span>Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+location
+government
+saleOrRent
+minPrice
+maxPrice
+appartType

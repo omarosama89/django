@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'aqarmap.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aqarmap',
+        'NAME': 'aqarmap_final',
         'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': '1232102512',
